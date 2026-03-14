@@ -218,6 +218,14 @@ export default function App() {
                   <img src="/milk-bancone.jpg" alt="Bancone bar con macchina del caffè" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : text === "[Sala con biliardo e luci neon]" ? (
                   <img src="/milk-sala-neon.jpg" alt="Sala con biliardo e luci neon" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : text === "[Area PlayStation e gaming]" ? (
+                  <img src="/milk-locale-burgers.jpg" alt="Area e cucina" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : text === "[Dehors esterno coperto]" ? (
+                  <img src="/milk-locale-dehors.jpg" alt="Dehors esterno coperto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : text === "[Cocktail serviti al bancone]" ? (
+                  <img src="/milk-locale-drink.jpg" alt="Cocktail e drink" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : text === "[Sala studio insonorizzata]" ? (
+                  <img src="/milk-locale-appetizers.jpg" alt="Aperitivi e stuzzichini" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
                   text
                 )}
