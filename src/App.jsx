@@ -24,18 +24,18 @@ const FAQ_ITEMS = [
 ];
 
 const SERVIZI = [
-  { emoji: "☕", titolo: "Colazione", desc: "Caffè spaziali, cappuccini, brioche calde sfornate ogni mattina. La colazione che ti sveglia per davvero." },
-  { emoji: "🥪", titolo: "Pranzo Veloce", desc: "Panini, piadine, toast, piatti del giorno. Pranzo pronto in pochi minuti, buono come a casa." },
-  { emoji: "🍸", titolo: "Aperitivo & Cocktail", desc: "Vibrazione di Venere, Tramonto Nebulare, Supernova... cocktail originali e classici rivisitati." },
-  { emoji: "🎱", titolo: "Biliardo & Giochi", desc: "Biliardo, biliardino, scacchi, carte, giochi di società. Il divertimento è sempre in casa." },
-  { emoji: "🎮", titolo: "PlayStation & Tornei", desc: "PS5 sempre accesa. Tornei di FIFA, serate gaming. Sfida i tuoi amici o fatti nuovi rivali." },
-  { emoji: "📚", titolo: "Sala Studio", desc: "Una saletta insonorizzata per studiare, leggere o lavorare in pace. Wi-Fi veloce e silenzio garantito." },
+  { titolo: "Colazione", tagline: "Caffè, cappuccini, brioche" },
+  { titolo: "Pranzo", tagline: "Panini, piadine, piatti del giorno" },
+  { titolo: "Aperitivo & Cocktail", tagline: "Originali e classici" },
+  { titolo: "Biliardo & Giochi", tagline: "Biliardino, carte, giochi di società" },
+  { titolo: "PlayStation & Tornei", tagline: "PS5, FIFA, serate gaming" },
+  { titolo: "Sala Studio", tagline: "Insonorizzata, Wi‑Fi, silenzio" },
 ];
 
 const MENU_CARDS = [
-  { emoji: "☕", titolo: "Bar & Colazione", desc: "Caffetteria, brioche, toast, succhi", url: "#" },
-  { emoji: "🍽️", titolo: "Pranzo", desc: "Panini, piadine, piatti del giorno", url: "#" },
-  { emoji: "🍸", titolo: "Cocktail & Drink", desc: "Cocktail originali, birre, vini, aperitivi", url: "#" },
+  { titolo: "Bar & Colazione", url: "#" },
+  { titolo: "Pranzo", url: "#" },
+  { titolo: "Cocktail & Drink", url: "#" },
 ];
 
 const GALLERY_PLACEHOLDERS = [
@@ -106,7 +106,6 @@ export default function App() {
 
         {/* Hero */}
         <section style={{ background: "#0A0A0A", paddingTop: "clamp(60px, 12vw, 100px)", paddingBottom: "clamp(48px, 10vw, 72px)" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", textTransform: "uppercase", letterSpacing: "3px", marginBottom: "16px" }}>🛸 LA TUA BASE SPAZIALE · RAVENNA</p>
           <h1 style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 4px 0", lineHeight: 1.1 }}>Milk.</h1>
           <h1 style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#3C43BF", margin: "0 0 24px 0", lineHeight: 1.1 }}>Coffee & Friends.</h1>
           <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.5)", maxWidth: "520px", lineHeight: 1.8, marginBottom: "32px" }}>
@@ -117,7 +116,7 @@ export default function App() {
             <a href="#menu" className="btn btn-outline">Guarda il Menù</a>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: "24px", maxWidth: "400px" }}>
-            <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>4.8</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>⭐ Google</span></div>
+            <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>4.8</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Google</span></div>
             <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>8-00</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Orario</span></div>
             <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>2024</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Dal</span></div>
           </div>
@@ -125,7 +124,7 @@ export default function App() {
 
         {/* Chi Siamo */}
         <section id="chi-siamo" style={{ background: "#111111" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>🌙 CHI SIAMO</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>CHI SIAMO</p>
           <h2 style={{ fontSize: "clamp(32px, 5vw, 42px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 4px 0" }}>Non È Solo Un Bar.</h2>
           <h2 style={{ fontSize: "clamp(32px, 5vw, 42px)", fontWeight: 700, color: "#3C43BF", margin: "0 0 24px 0" }}>È Casa Tua.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "32px", alignItems: "center" }}>
@@ -138,22 +137,22 @@ export default function App() {
 
         {/* Cosa Facciamo */}
         <section style={{ background: "#0A0A0A" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>✨ COSA FACCIAMO</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>COSA FACCIAMO</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>Dal Caffè al Cocktail. E Tutto Quello in Mezzo.</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
             {SERVIZI.map((s, i) => (
               <div
                 key={i}
                 style={{
                   background: "#111111",
-                  border: "1px solid rgba(60,67,191,0.08)",
-                  borderRadius: "16px",
-                  padding: "28px",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  borderLeft: "3px solid #3C43BF",
+                  borderRadius: "12px",
+                  padding: "24px 24px 24px 28px",
                 }}
               >
-                <span style={{ fontSize: "28px", display: "block", marginBottom: "12px" }}>{s.emoji}</span>
-                <h3 style={{ fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0", fontSize: "20px" }}>{s.titolo}</h3>
-                <p style={{ margin: 0, color: "rgba(255,255,255,0.6)", fontSize: "15px", lineHeight: 1.6 }}>{s.desc}</p>
+                <h3 style={{ fontWeight: 600, color: "#FFFFFF", margin: "0 0 6px 0", fontSize: "17px", letterSpacing: "0.02em" }}>{s.titolo}</h3>
+                <p style={{ margin: 0, color: "rgba(255,255,255,0.45)", fontSize: "14px", lineHeight: 1.5 }}>{s.tagline}</p>
               </div>
             ))}
           </div>
@@ -161,25 +160,28 @@ export default function App() {
 
         {/* Menù */}
         <section id="menu" style={{ background: "#111111" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>📋 IL MENÙ</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>IL MENÙ</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 12px 0" }}>Scegli la Tua Orbita.</h2>
           <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: "32px", maxWidth: "520px" }}>Sfoglia i nostri menù. Dalle colazioni ai cocktail, c'è sempre qualcosa che fa per te.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
             {MENU_CARDS.map((card, i) => (
               <div
                 key={i}
                 style={{
                   background: "#0A0A0A",
-                  border: "1px solid rgba(60,67,191,0.1)",
-                  borderRadius: "16px",
-                  padding: "32px",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "12px",
+                  padding: "28px 24px",
                   textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "20px",
                 }}
               >
-                <span style={{ fontSize: "48px", display: "block", marginBottom: "16px" }}>{card.emoji}</span>
-                <h3 style={{ fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0", fontSize: "20px" }}>{card.titolo}</h3>
-                <p style={{ margin: "0 0 20px 0", color: "rgba(255,255,255,0.5)", fontSize: "15px" }}>{card.desc}</p>
-                <a href={card.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ width: "100%" }}>Apri il Menù →</a>
+                <h3 style={{ fontWeight: 600, color: "#FFFFFF", margin: 0, fontSize: "18px", letterSpacing: "0.02em" }}>{card.titolo}</h3>
+                <a href={card.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ width: "100%", maxWidth: "200px" }}>Apri il Menù</a>
               </div>
             ))}
           </div>
@@ -187,7 +189,7 @@ export default function App() {
 
         {/* Il Locale */}
         <section id="locale" style={{ background: "#0A0A0A" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>📸 IL LOCALE</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>IL LOCALE</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>La Tua Base Spaziale.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
             {GALLERY_PLACEHOLDERS.map((text, i) => (
@@ -220,7 +222,7 @@ export default function App() {
 
         {/* Recensioni */}
         <section style={{ background: "#111111" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>⭐ RECENSIONI</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>RECENSIONI</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>Cosa Dicono di Noi.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
             {RECENSIONI.map((r, i) => (
@@ -235,7 +237,7 @@ export default function App() {
               >
                 <p style={{ margin: "0 0 16px 0", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>"{r.testo}"</p>
                 <p style={{ margin: 0, color: "#FFFFFF", fontWeight: 600 }}>{r.nome}</p>
-                <p style={{ margin: "4px 0 0 0", fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>{r.stelle} ⭐ {r.piattaforma}</p>
+                <p style={{ margin: "4px 0 0 0", fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>{r.stelle} — {r.piattaforma}</p>
               </div>
             ))}
           </div>
@@ -243,7 +245,7 @@ export default function App() {
 
         {/* Orari e Contatti */}
         <section id="contatti" style={{ background: "#0A0A0A" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>📍 DOVE SIAMO</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>DOVE SIAMO</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>Vieni a Trovarci.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "32px", alignItems: "start" }}>
             <div>
@@ -276,7 +278,7 @@ export default function App() {
 
         {/* FAQ */}
         <section style={{ background: "#111111" }}>
-          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>❓ FAQ</p>
+          <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>FAQ</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 24px 0" }}>Domande Frequenti</h2>
           <div style={{ maxWidth: "700px" }}>
             {FAQ_ITEMS.map((item, i) => (
