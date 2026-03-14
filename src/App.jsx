@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FAQ_ITEMS = [
   {
@@ -51,13 +51,30 @@ export default function App() {
   const [openFaq, setOpenFaq] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const els = document.querySelectorAll(".milk-app .reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+        html, body { margin: 0; padding: 0; outline: none; border: none; overflow-x: hidden; }
         html { scroll-behavior: smooth; }
         .milk-app * { box-sizing: border-box; }
-        .milk-app { font-family: 'Outfit', sans-serif; background: #0A0A0A; color: rgba(255,255,255,0.6); font-size: clamp(16px, 2vw, 17px); line-height: 1.6; }
+        .milk-app { font-family: 'Outfit', sans-serif; background: linear-gradient(180deg, #0a0a0e 0%, #0d0b18 35%, #0a0a12 70%, #0a0a0e 100%); color: rgba(255,255,255,0.6); font-size: clamp(16px, 2vw, 17px); line-height: 1.6; min-height: 100vh; }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease-out, transform 0.55s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .milk-app h1, .milk-app h2, .milk-app .font-heading { font-family: 'Outfit', sans-serif; font-weight: 700; color: #FFFFFF; }
         .milk-app section { padding: clamp(48px, 10vw, 80px) clamp(16px, 5vw, 24px); max-width: 1200px; margin: 0 auto; }
         .milk-app .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 12px; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 15px; text-decoration: none; transition: background 0.3s ease, border-color 0.3s ease; cursor: pointer; border: none; }
@@ -123,24 +140,17 @@ export default function App() {
         </nav>
 
         {/* Hero */}
-        <section style={{
-          backgroundImage: "linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.7)), url('/hero-bg.jpg')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          paddingTop: "clamp(60px, 12vw, 100px)",
-          paddingBottom: "clamp(48px, 10vw, 72px)",
-        }}>
-          <h1 style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 4px 0", lineHeight: 1.1 }}>Milk.</h1>
-          <h1 style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#3C43BF", margin: "0 0 24px 0", lineHeight: 1.1 }}>Coffee & Friends.</h1>
-          <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.5)", maxWidth: "520px", lineHeight: 1.8, marginBottom: "32px" }}>
+        <section style={{ paddingTop: "clamp(60px, 12vw, 100px)", paddingBottom: "clamp(48px, 10vw, 72px)" }}>
+          <h1 className="reveal" style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 4px 0", lineHeight: 1.1 }}>Milk.</h1>
+          <h1 className="reveal" style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#3C43BF", margin: "0 0 24px 0", lineHeight: 1.1 }}>Coffee & Friends.</h1>
+          <p className="reveal" style={{ fontSize: "17px", color: "rgba(255,255,255,0.5)", maxWidth: "520px", lineHeight: 1.8, marginBottom: "32px" }}>
             Colazioni stellari, pranzi veloci, aperitivi galattici. Biliardo, PlayStation, sala studio. Il tuo rifugio a Ravenna, dalle 8 a mezzanotte.
           </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginBottom: "48px" }}>
+          <div className="reveal" style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginBottom: "48px" }}>
             <a href="https://wa.me/393312854897?text=Ciao,%20vorrei%20prenotare!" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Prenota il Tavolo</a>
             <a href="#menu" className="btn btn-outline">Guarda il Menù</a>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: "24px", maxWidth: "400px" }}>
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: "24px", maxWidth: "400px" }}>
             <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>4.8</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Google</span></div>
             <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>8-00</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Orario</span></div>
             <div><span style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF" }}>2024</span><br /><span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Dal</span></div>
@@ -148,7 +158,7 @@ export default function App() {
         </section>
 
         {/* Chi Siamo */}
-        <section id="chi-siamo" style={{ background: "#111111" }}>
+        <section id="chi-siamo" className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>CHI SIAMO</p>
           <h2 style={{ fontSize: "clamp(32px, 5vw, 42px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 4px 0" }}>Non È Solo Un Bar.</h2>
           <h2 style={{ fontSize: "clamp(32px, 5vw, 42px)", fontWeight: 700, color: "#3C43BF", margin: "0 0 24px 0" }}>È Casa Tua.</h2>
@@ -161,7 +171,7 @@ export default function App() {
         </section>
 
         {/* Cosa Facciamo */}
-        <section style={{ background: "#0A0A0A" }}>
+        <section className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>COSA FACCIAMO</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>Dal Caffè al Cocktail. E Tutto Quello in Mezzo.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
@@ -184,7 +194,7 @@ export default function App() {
         </section>
 
         {/* Menù */}
-        <section id="menu" style={{ background: "#111111" }}>
+        <section id="menu" className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>IL MENÙ</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 16px 0" }}>Il nostro menù</h2>
           <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: "28px", maxWidth: "480px", lineHeight: 1.6 }}>Colazioni, pranzi, cocktail e drink. Scarica il PDF e sfoglia quando vuoi.</p>
@@ -192,7 +202,7 @@ export default function App() {
         </section>
 
         {/* Il Locale */}
-        <section id="locale" style={{ background: "#0A0A0A" }}>
+        <section id="locale" className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>IL LOCALE</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>La Tua Base Spaziale.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
@@ -235,7 +245,7 @@ export default function App() {
         </section>
 
         {/* Recensioni */}
-        <section style={{ background: "#111111" }}>
+        <section className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>RECENSIONI</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>Cosa Dicono di Noi.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
@@ -258,7 +268,7 @@ export default function App() {
         </section>
 
         {/* Orari e Contatti */}
-        <section id="contatti" style={{ background: "#0A0A0A" }}>
+        <section id="contatti" className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>DOVE SIAMO</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 32px 0" }}>Vieni a Trovarci.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "32px", alignItems: "start" }}>
@@ -291,7 +301,7 @@ export default function App() {
         </section>
 
         {/* FAQ */}
-        <section style={{ background: "#111111" }}>
+        <section className="reveal" style={{ background: "transparent" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>FAQ</p>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 24px 0" }}>Domande Frequenti</h2>
           <div style={{ maxWidth: "700px" }}>
