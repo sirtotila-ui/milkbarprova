@@ -115,8 +115,7 @@ export default function App() {
           }}
         >
           <a href="#" style={{ textDecoration: "none", color: "inherit" }}>
-            <div style={{ fontFamily: "Outfit", fontSize: "22px", fontWeight: 700, color: "#FFFFFF" }}>Milk</div>
-            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "2px" }}>Coffee & Friends</div>
+            <div style={{ fontFamily: "Outfit", fontSize: "22px", fontWeight: 700, color: "#FFFFFF" }}>Milk - Coffee & Friends</div>
           </a>
           <div className="nav-links-desktop">
             <a href="#chi-siamo" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Chi Siamo</a>
@@ -261,7 +260,7 @@ export default function App() {
               >
                 <p style={{ margin: "0 0 16px 0", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>"{r.testo}"</p>
                 <p style={{ margin: 0, color: "#FFFFFF", fontWeight: 600 }}>{r.nome}</p>
-                <p style={{ margin: "4px 0 0 0", fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>{r.stelle} — {r.piattaforma}</p>
+                <p style={{ margin: "4px 0 0 0", fontSize: "14px", color: "rgba(255,255,255,0.5)" }}><span style={{ color: "#E8B923", letterSpacing: "2px" }}>★★★★★</span> · {r.piattaforma}</p>
               </div>
             ))}
           </div>
