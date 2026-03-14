@@ -32,12 +32,6 @@ const SERVIZI = [
   { titolo: "Sala Studio", tagline: "Insonorizzata, Wi‑Fi, silenzio" },
 ];
 
-const MENU_CARDS = [
-  { titolo: "Bar & Colazione", url: "#" },
-  { titolo: "Pranzo", url: "#" },
-  { titolo: "Cocktail & Drink", url: "#" },
-];
-
 const GALLERY_PLACEHOLDERS = [
   "[Bancone bar con macchina del caffè]",
   "[Sala con biliardo e luci neon]",
@@ -161,30 +155,9 @@ export default function App() {
         {/* Menù */}
         <section id="menu" style={{ background: "#111111" }}>
           <p style={{ fontSize: "11px", color: "#3C43BF", letterSpacing: "2px", marginBottom: "8px" }}>IL MENÙ</p>
-          <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 12px 0" }}>Scegli la Tua Orbita.</h2>
-          <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: "32px", maxWidth: "520px" }}>Sfoglia i nostri menù. Dalle colazioni ai cocktail, c'è sempre qualcosa che fa per te.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
-            {MENU_CARDS.map((card, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "#0A0A0A",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "12px",
-                  padding: "28px 24px",
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "20px",
-                }}
-              >
-                <h3 style={{ fontWeight: 600, color: "#FFFFFF", margin: 0, fontSize: "18px", letterSpacing: "0.02em" }}>{card.titolo}</h3>
-                <a href={card.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ width: "100%", maxWidth: "200px" }}>Apri il Menù</a>
-              </div>
-            ))}
-          </div>
+          <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 16px 0" }}>Il nostro menù</h2>
+          <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: "28px", maxWidth: "480px", lineHeight: 1.6 }}>Colazioni, pranzi, cocktail e drink. Scarica il PDF e sfoglia quando vuoi.</p>
+          <a href="/menu-milk.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ minWidth: "200px" }}>Apri il menù (PDF)</a>
         </section>
 
         {/* Il Locale */}
@@ -212,6 +185,8 @@ export default function App() {
               >
                 {text === "[Bancone bar con macchina del caffè]" ? (
                   <img src="/milk-bancone.jpg" alt="Bancone bar con macchina del caffè" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : text === "[Sala con biliardo e luci neon]" ? (
+                  <img src="/milk-sala-neon.jpg" alt="Sala con biliardo e luci neon" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
                   text
                 )}
