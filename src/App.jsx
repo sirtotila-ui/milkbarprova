@@ -49,6 +49,7 @@ const RECENSIONI = [
 
 export default function App() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -64,6 +65,17 @@ export default function App() {
         .milk-app .btn-primary:hover { background: #4B52D4; }
         .milk-app .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #FFFFFF; }
         .milk-app .btn-outline:hover { border-color: rgba(255,255,255,0.35); }
+        .nav-links-desktop { display: flex; align-items: center; gap: clamp(16px, 4vw, 32px); flex-wrap: wrap; }
+        .nav-hamburger { display: none; background: none; border: none; padding: 8px; cursor: pointer; color: #fff; }
+        .nav-dropdown { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(16px); flex-direction: column; padding: 16px; gap: 8px; border-bottom: 1px solid rgba(60,67,191,0.1); }
+        .nav-dropdown.open { display: flex; }
+        @media (max-width: 768px) {
+          .nav-links-desktop { display: none; }
+          .nav-hamburger { display: flex; flex-direction: column; gap: 5px; }
+        }
+        @media (min-width: 769px) {
+          .nav-dropdown { display: none !important; }
+        }
       `}</style>
 
       <div className="milk-app">
@@ -89,17 +101,36 @@ export default function App() {
             <div style={{ fontFamily: "Outfit", fontSize: "22px", fontWeight: 700, color: "#FFFFFF" }}>Milk</div>
             <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", letterSpacing: "2px" }}>Coffee & Friends</div>
           </a>
-          <div style={{ display: "flex", alignItems: "center", gap: "clamp(16px, 4vw, 32px)", flexWrap: "wrap" }}>
+          <div className="nav-links-desktop">
             <a href="#chi-siamo" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Chi Siamo</a>
             <a href="#menu" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Menù</a>
             <a href="#locale" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Il Locale</a>
             <a href="#contatti" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Contatti</a>
             <a href="https://wa.me/393312854897?text=Ciao,%20vorrei%20prenotare!" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Prenota</a>
           </div>
+          <button type="button" className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" aria-expanded={menuOpen}>
+            <span style={{ display: "block", width: "24px", height: "2px", background: "#fff" }} />
+            <span style={{ display: "block", width: "24px", height: "2px", background: "#fff" }} />
+            <span style={{ display: "block", width: "24px", height: "2px", background: "#fff" }} />
+          </button>
+          <div className={`nav-dropdown ${menuOpen ? "open" : ""}`}>
+            <a href="#chi-siamo" style={{ fontSize: "15px", color: "rgba(255,255,255,0.85)", textDecoration: "none", padding: "10px 0" }} onClick={() => setMenuOpen(false)}>Chi Siamo</a>
+            <a href="#menu" style={{ fontSize: "15px", color: "rgba(255,255,255,0.85)", textDecoration: "none", padding: "10px 0" }} onClick={() => setMenuOpen(false)}>Menù</a>
+            <a href="#locale" style={{ fontSize: "15px", color: "rgba(255,255,255,0.85)", textDecoration: "none", padding: "10px 0" }} onClick={() => setMenuOpen(false)}>Il Locale</a>
+            <a href="#contatti" style={{ fontSize: "15px", color: "rgba(255,255,255,0.85)", textDecoration: "none", padding: "10px 0" }} onClick={() => setMenuOpen(false)}>Contatti</a>
+            <a href="https://wa.me/393312854897?text=Ciao,%20vorrei%20prenotare!" className="btn btn-primary" target="_blank" rel="noopener noreferrer" style={{ marginTop: "8px", width: "100%", maxWidth: "200px" }} onClick={() => setMenuOpen(false)}>Prenota</a>
+          </div>
         </nav>
 
         {/* Hero */}
-        <section style={{ background: "#0A0A0A", paddingTop: "clamp(60px, 12vw, 100px)", paddingBottom: "clamp(48px, 10vw, 72px)" }}>
+        <section style={{
+          backgroundImage: "linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.7)), url('/hero-bg.jpg')",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          paddingTop: "clamp(60px, 12vw, 100px)",
+          paddingBottom: "clamp(48px, 10vw, 72px)",
+        }}>
           <h1 style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#FFFFFF", margin: "0 0 4px 0", lineHeight: 1.1 }}>Milk.</h1>
           <h1 style={{ fontSize: "clamp(48px, 10vw, 80px)", fontWeight: 700, color: "#3C43BF", margin: "0 0 24px 0", lineHeight: 1.1 }}>Coffee & Friends.</h1>
           <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.5)", maxWidth: "520px", lineHeight: 1.8, marginBottom: "32px" }}>
